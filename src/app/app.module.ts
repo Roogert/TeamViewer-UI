@@ -7,11 +7,28 @@ import { TeamListContainerComponent } from './team-list-container/team-list-cont
 import { MaterialModule } from './material/material.module';
 import { SignUpFormComponent } from './auth/sign-up-form/sign-up-form.component';
 import { SignInFormComponent } from './auth/sign-in-form/sign-in-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, TeamListContainerComponent, SignUpFormComponent, SignInFormComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, MaterialModule],
-  providers: [],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    TeamListContainerComponent,
+    SignUpFormComponent,
+    SignInFormComponent,
+  ],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    HttpClientModule,
+  ],
+  providers: [CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
