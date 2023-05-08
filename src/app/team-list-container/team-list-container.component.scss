@@ -14,6 +14,7 @@
 
 .card mat-card {
   height: 100%;
+  padding: 0 0 0 0;
 }
 
 .info-container {
@@ -28,6 +29,9 @@
   color: #455A64;
 }
 
+.content-area{
+  width: 100%;
+}
 
 .tooltip {
   position: relative;

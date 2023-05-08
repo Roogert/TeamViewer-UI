@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class TeamExpansionPanelComponent {
 
+list: string[]=["hello", "world", "!!!"];
+
 }
+
