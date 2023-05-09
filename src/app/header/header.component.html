@@ -7,6 +7,7 @@
   <div class="app-name">VizTeams</div>
   <span class="filler"></span>
   <div class="placeholder-text">User Name</div>
+  <!-- This menu dropdown for logout login etc???? -->
   <div class="options-menu">
     <button
       mat-icon-button
@@ -17,16 +18,16 @@
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>
-        <mat-icon>dialpad</mat-icon>
-        <span>Redial</span>
+        <span class="material-symbols-rounded"> login </span>
+        <span>login</span>
       </button>
       <button mat-menu-item disabled>
-        <mat-icon>voicemail</mat-icon>
-        <span>Check voice mail</span>
+        <span class="material-symbols-rounded"> logout </span>
+        <span>logout</span>
       </button>
       <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Disable alerts</span>
+        <span class="material-symbols-rounded"> settings </span>
+        <span>settings</span>
       </button>
     </mat-menu>
   </div>
