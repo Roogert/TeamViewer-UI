@@ -1,1 +1,39 @@
-<p>sign-in-form works!</p>
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2>Welcome Back</h2>
+
+      <mat-error *ngIf="loginInvalid">
+        The username and password were not recognised
+      </mat-error>
+
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Email" formControlName="email" required />
+        <mat-error *ngIf="loginForm.controls['email'].invalid">
+          Please provide a valid email address
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width-input">
+        <input
+          matInput
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+          required
+        />
+        <mat-error *ngIf="loginForm.controls['password'].invalid">
+          Please provide a valid password
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        class="btn-raised-button"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
