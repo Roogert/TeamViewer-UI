@@ -1,6 +1,34 @@
 <mat-toolbar color="primary" class="vizient-header">
-    <img src="/assets/images/vizient-logo-registered.svg" alt="Vizient Logo" class="logo">
-    <div class="app-name">VizTeams</div>
-    <span class="filler"></span>
-    <div class="placeholder-text">User Name</div>
+  <img
+    src="/assets/images/vizient-logo-registered.svg"
+    alt="Vizient Logo"
+    class="logo"
+  />
+  <div class="app-name">VizTeams</div>
+  <span class="filler"></span>
+  <div class="placeholder-text">User Name</div>
+  <!-- This menu dropdown for logout login etc???? -->
+  <div class="options-menu">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <span class="material-symbols-rounded"> login </span>
+        <span>login</span>
+      </button>
+      <button mat-menu-item disabled>
+        <span class="material-symbols-rounded"> logout </span>
+        <span>logout</span>
+      </button>
+      <button mat-menu-item>
+        <span class="material-symbols-rounded"> settings </span>
+        <span>settings</span>
+      </button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
