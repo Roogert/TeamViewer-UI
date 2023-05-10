@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class TeamExpansionPanelComponent {
 
+  list: string[]=
+  ["Red Jaguars",
+  "Blue Barracudas",
+  "Green Monkeys",
+  "Orange Iguanas",
+  "Purple Parrots",
+  "Silver Snakes"];
+
+
 }
