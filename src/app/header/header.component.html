@@ -17,14 +17,21 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <!-- Login Modal  -->
+      <button mat-menu-item (click)="openDialog()">
         <span class="material-symbols-rounded"> login </span>
         <span>login</span>
       </button>
-      <button mat-menu-item disabled>
+      <!-- logout functions button is disabled unless logged in -->
+      <button
+        mat-menu-item
+        [disabled]="!(authService.isLoggedIn() | async)"
+        (click)="confirmSignOut()"
+      >
         <span class="material-symbols-rounded"> logout </span>
         <span>logout</span>
       </button>
+
       <button mat-menu-item>
         <span class="material-symbols-rounded"> settings </span>
         <span>settings</span>

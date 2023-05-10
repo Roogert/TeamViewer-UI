@@ -24,7 +24,7 @@ export class AuthServiceService {
     }
   }
 
-  get isLoggedIn() {
+  isLoggedIn() {
     return this.loggedIn.asObservable();
   }
 
@@ -38,7 +38,7 @@ export class AuthServiceService {
         tap((response: any) => {
           this.cookie.set('token', response.payload.token.value);
           this.loggedIn.next(true);
-          this.router.navigate(['/home']); // navigate to home page
+          this.router.navigate(['']);
         })
       );
   }

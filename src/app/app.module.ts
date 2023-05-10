@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { TeamListContainerComponent } from './team-list-container/team-list-container.component';
 import { MaterialModule } from './material/material.module';
-
 import { SignUpFormComponent } from './auth/sign-up-form/sign-up-form.component';
 import { SignInFormComponent } from './auth/sign-in-form/sign-in-form.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,6 +12,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TeamExpansionPanelComponent } from './team-expansion-panel/team-expansion-panel.component';
+import { SignInModalComponent } from './modals/sign-in-modal/sign-in-modal.component';
+import { SignOutModalComponent } from './modals/sign-out-modal/sign-out-modal.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,9 @@ import { TeamExpansionPanelComponent } from './team-expansion-panel/team-expansi
     TeamListContainerComponent,
     SignUpFormComponent,
     SignInFormComponent,
-    TeamExpansionPanelComponent
+    TeamExpansionPanelComponent,
+    SignInModalComponent,
+    SignOutModalComponent,
   ],
   imports: [
     FormsModule,
@@ -31,9 +34,7 @@ import { TeamExpansionPanelComponent } from './team-expansion-panel/team-expansi
     MaterialModule,
     HttpClientModule,
   ],
-  providers: [CookieService], 
-  bootstrap: [AppComponent]
-
-
+  providers: [CookieService],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
