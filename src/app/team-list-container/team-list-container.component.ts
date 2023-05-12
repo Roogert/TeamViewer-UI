@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./team-list-container.component.scss']
 })
 export class TeamListContainerComponent implements OnInit {
+isExpanded:boolean=false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  handleExpanded(isExpanded:boolean){
+    this.isExpanded=isExpanded;
+  }
+
+  
 }

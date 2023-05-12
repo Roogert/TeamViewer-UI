@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TeamExpansionPanelComponent } from './team-expansion-panel/team-expansion-panel.component';
 import { SignInModalComponent } from './modals/sign-in-modal/sign-in-modal.component';
 import { SignOutModalComponent } from './modals/sign-out-modal/sign-out-modal.component';
+import { TeamInfoContainerComponent } from './team-info-container/team-info-container.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SignOutModalComponent } from './modals/sign-out-modal/sign-out-modal.co
     TeamExpansionPanelComponent,
     SignInModalComponent,
     SignOutModalComponent,
+    TeamInfoContainerComponent,
   ],
   imports: [
     FormsModule,

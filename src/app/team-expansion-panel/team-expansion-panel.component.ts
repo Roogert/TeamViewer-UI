@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-team-expansion-panel',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./team-expansion-panel.component.scss']
 })
 export class TeamExpansionPanelComponent {
+@Output() isExpanded:EventEmitter<boolean> = new EventEmitter<boolean>();
 
   list: string[]=
   ["Red Jaguars",
@@ -15,5 +16,13 @@ export class TeamExpansionPanelComponent {
   "Purple Parrots",
   "Silver Snakes"];
 
+expandedPanel(){
+  this.isExpanded.emit(true);
+  console.log("works")
+}
+
+closeExpanded(){
+console.log("close");
+}
 
 }

@@ -1,5 +1,5 @@
 <mat-accordion>
-<mat-expansion-panel  [expanded]="true" class="full-width" *ngFor="let item of list">
+<mat-expansion-panel   class="full-width" *ngFor="let item of list" (opened)="expandedPanel()" (closed)="closeExpanded()">
   <mat-expansion-panel-header>
     <mat-panel-title>
       {{item}}
