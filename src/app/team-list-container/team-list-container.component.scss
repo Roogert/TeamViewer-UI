@@ -9,11 +9,13 @@
 .card {
   width: 45%;
   height: 550px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
 }
 
 .card mat-card {
   height: 100%;
+  padding: 0 0 0 0;
 }
 
 .info-container {
@@ -24,8 +26,17 @@
   color: #455A64;
 }
 
+// left side
+.content-area{
+  width: 100%;
+  height: 78%;
+  box-shadow: none;
+  padding: 0 0 0 0;
+}
+
 .left-container-header {
   color: #455A64;
+  padding-bottom: 10px;
 }
 
 
