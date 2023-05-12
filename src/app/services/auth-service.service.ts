@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, tap } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 
@@ -30,13 +30,13 @@ export class AuthServiceService {
 
   login(email: string, password: string) {
     return this.http
-      .post<LoginResponse>('TODO:"Update Routes"', {
+      .post<LoginResponse>('http://localhost:3000/auth/login', {
         email,
         password,
       })
       .pipe(
         tap((response: any) => {
-          this.cookie.set('token', response.payload.token.value);
+          this.cookie.set('token', response.token);
           this.loggedIn.next(true);
           this.router.navigate(['']);
         })

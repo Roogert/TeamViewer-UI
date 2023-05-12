@@ -21,7 +21,7 @@ export class SignInFormComponent {
       const { email, password } = this.loginForm.value;
       this.authService.login(email || '', password || '').subscribe({
         next: () => console.log('Logged in successfully'),
-        error: () => (this.loginInvalid = true),
+        error: (x) => ((this.loginInvalid = true), console.log(x)),
       });
     }
   }
