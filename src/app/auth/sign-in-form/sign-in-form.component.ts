@@ -8,7 +8,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
   styleUrls: ['./sign-in-form.component.scss'],
 })
 export class SignInFormComponent {
-  loginForm = new FormGroup({
+  loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
   });

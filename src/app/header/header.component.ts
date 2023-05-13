@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SignInModalComponent } from '../modals/sign-in-modal/sign-in-modal.component';
+import { SignUpModalComponent } from '../modals/sign-up-modal/sign-up-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthServiceService } from '../services/auth-service.service';
 
@@ -9,12 +10,17 @@ import { AuthServiceService } from '../services/auth-service.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  userNotLogged: boolean = true;
   constructor(
     public dialog: MatDialog,
     public authService: AuthServiceService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.isLoggedIn().subscribe((isLoggedIn) => {
+      this.userNotLogged = !isLoggedIn;
+    });
+  }
 
   //modal functions
   openDialog(): void {
@@ -27,6 +33,22 @@ export class HeaderComponent implements OnInit {
       console.log('The dialog was closed');
       // You can get your data back from the dialog here
     });
+  }
+
+  openSignupDialog(): void {
+    const dialogRef = this.dialog.open(SignUpModalComponent, {
+      width: '500px',
+      height: '500px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      // You can get your data back from the dialog here
+    });
+  }
+
+  closeDialog(): void {
+    this.dialog.closeAll;
   }
 
   confirmSignOut() {
