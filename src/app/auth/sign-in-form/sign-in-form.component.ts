@@ -8,7 +8,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
   styleUrls: ['./sign-in-form.component.scss'],
 })
 export class SignInFormComponent {
-  loginForm = new FormGroup({
+  loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
   });
@@ -21,7 +21,7 @@ export class SignInFormComponent {
       const { email, password } = this.loginForm.value;
       this.authService.login(email || '', password || '').subscribe({
         next: () => console.log('Logged in successfully'),
-        error: (x) => ((this.loginInvalid = true), console.log(x)),
+        error: () => (this.loginInvalid = true),
       });
     }
   }
