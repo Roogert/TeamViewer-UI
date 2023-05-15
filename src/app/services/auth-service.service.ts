@@ -18,6 +18,8 @@ interface User {
 })
 export class AuthServiceService {
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private apiAuthUrl = 'http://localhost:3000/auth/login';
+  private apiSignupUrl = 'http://localhost:3000/users/create';
 
   constructor(private http: HttpClient, private cookie: CookieService) {
     const token = this.cookie.get('token');
@@ -32,7 +34,7 @@ export class AuthServiceService {
 
   login(email: string, password: string) {
     return this.http
-      .post<LoginResponse>('http://localhost:3000/auth/login', {
+      .post<LoginResponse>(`${this.apiAuthUrl}`, {
         email,
         password,
       })
@@ -52,7 +54,7 @@ export class AuthServiceService {
   }
 
   signUp(user: User) {
-    return this.http.post('http://localhost:3000/users/create', user).pipe(
+    return this.http.post(`${this.apiSignupUrl}`, user).pipe(
       tap({
         next: (response) => {
           // User created successfully
