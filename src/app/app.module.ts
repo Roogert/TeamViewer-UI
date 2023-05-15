@@ -15,6 +15,7 @@ import { TeamExpansionPanelComponent } from './team-expansion-panel/team-expansi
 import { SignInModalComponent } from './modals/sign-in-modal/sign-in-modal.component';
 
 import { SignUpModalComponent } from './modals/sign-up-modal/sign-up-modal.component';
+import { TeamDialogComponent } from './modals/team-dialog/team-dialog.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SignUpModalComponent } from './modals/sign-up-modal/sign-up-modal.compo
     SignInModalComponent,
 
     SignUpModalComponent,
+      TeamDialogComponent,
   ],
   imports: [
     FormsModule,

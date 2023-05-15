@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from 'src/environments/environment';
 
 interface LoginResponse {
   token: string;
@@ -18,6 +19,9 @@ interface User {
 })
 export class AuthServiceService {
   private loggedIn = new BehaviorSubject<boolean>(false);
+  private baseApiUrl = environment.apiUrl;
+  private apiAuthUrl = `${this.baseApiUrl}/auth/login`;
+  private apiSignupUrl = `${this.baseApiUrl}/users`;
 
   constructor(private http: HttpClient, private cookie: CookieService) {
     const token = this.cookie.get('token');
@@ -32,7 +36,7 @@ export class AuthServiceService {
 
   login(email: string, password: string) {
     return this.http
-      .post<LoginResponse>('http://localhost:3000/auth/login', {
+      .post<LoginResponse>(`${this.apiAuthUrl}`, {
         email,
         password,
       })
@@ -52,7 +56,7 @@ export class AuthServiceService {
   }
 
   signUp(user: User) {
-    return this.http.post('http://localhost:3000/users/create', user).pipe(
+    return this.http.post(`${this.apiSignupUrl}`, user).pipe(
       tap({
         next: (response) => {
           // User created successfully
