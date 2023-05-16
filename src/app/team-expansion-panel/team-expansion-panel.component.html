@@ -13,7 +13,12 @@
     </div>
 
     <mat-action-row>
-      <button mat-button color="primary">Next</button>
+      <div class="member-count">
+        {{ members.length }}/{{ maxTeamMembers }}
+      </div>
+      <button mat-button (click)="addTeamMember">
+        <mat-icon class="mat-icon-person-color">person_add</mat-icon>
+      </button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>

@@ -58,3 +58,17 @@ mat-accordian{
   visibility: visible;
   opacity: 1;
 }
+
+.mat-icon-person-color {
+  color: #455a64de;
+  transform: scale(1.5);
+}
+
+.member-count {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  color: #455a64de;
+  font-size: 14px;
+}
