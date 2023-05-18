@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { SignInModalComponent } from '../modals/sign-in-modal/sign-in-modal.component';
 import { SignUpModalComponent } from '../modals/sign-up-modal/sign-up-modal.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,12 +13,14 @@ export class HeaderComponent implements OnInit {
   userNotLogged: boolean = true;
   constructor(
     public dialog: MatDialog,
-    public authService: AuthServiceService
+    public authService: AuthServiceService,
+    private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.authService.isLoggedIn().subscribe((isLoggedIn) => {
       this.userNotLogged = !isLoggedIn;
+      this.changeDetectorRef.detectChanges();
     });
   }
 

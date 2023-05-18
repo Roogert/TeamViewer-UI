@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { TeamService } from 'src/app/services/team.service';
 import { Team } from 'src/app/models/team.model';
+
 @Component({
   selector: 'app-team-expansion-panel',
   templateUrl: './team-expansion-panel.component.html',
@@ -9,16 +10,20 @@ import { Team } from 'src/app/models/team.model';
 export class TeamExpansionPanelComponent implements OnInit {
   teams: Team[] = [];
 
-  constructor(private team: TeamService) {}
+  constructor(
+    private teamService: TeamService,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.showTeams();
   }
 
   showTeams() {
-    this.team.getAllTeams().subscribe((teams) => {
+    this.teamService.getAllTeams().subscribe((teams) => {
       console.log(teams);
       this.teams = teams;
+      this.changeDetectorRef.detectChanges();
     });
   }
 }

@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TeamService } from 'src/app/services/team.service';
 
@@ -9,24 +9,27 @@ import { TeamService } from 'src/app/services/team.service';
   styleUrls: ['./team-dialog.component.scss'],
 })
 export class TeamDialogComponent {
-  form: FormGroup;
+  teamForm: FormGroup = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
+  });
+  teamFormInvalid = false;
 
   constructor(
-    private fb: FormBuilder,
     private teamService: TeamService,
     public dialogRef: MatDialogRef<TeamDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    this.form = this.fb.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-    });
-  }
+  ) {}
 
   save() {
-    if (this.form.valid) {
-      this.teamService.createTeam(this.form.value).subscribe(() => {
+    if (this.teamForm.valid) {
+      const team = {
+        name: this.teamForm.get('name')?.value,
+        description: this.teamForm.get('description')?.value,
+      };
+      this.teamService.createTeam(team).subscribe(() => {
         this.dialogRef.close();
+        console.log(team);
       });
     }
   }
