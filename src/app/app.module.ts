@@ -16,6 +16,7 @@ import { SignInModalComponent } from './modals/sign-in-modal/sign-in-modal.compo
 
 import { SignUpModalComponent } from './modals/sign-up-modal/sign-up-modal.component';
 import { TeamDialogComponent } from './modals/team-dialog/team-dialog.component';
+import { MemberDialogComponent } from './modals/member-dialog/member-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { TeamDialogComponent } from './modals/team-dialog/team-dialog.component'
 
     SignUpModalComponent,
       TeamDialogComponent,
+      MemberDialogComponent,
   ],
   imports: [
     FormsModule,
