@@ -1,17 +1,25 @@
 <mat-accordion>
-  <mat-expansion-panel
-    [expanded]="true"
-    class="full-width"
-    *ngFor="let team of teams"
-  >
+
+  <mat-expansion-panel [expanded]="panelOpenState" class="full-width" *ngFor="let team of teams">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{ team.name }}
       </mat-panel-title>
     </mat-expansion-panel-header>
 
+    <div class="member-photos">
+      <div class="member-avatar" *ngFor="let member of members">
+        <div class="avatar-image" [ngStyle]="{'background-image': 'url(' + getMemberPhoto(member) + ')'}" matTooltip="{{ member.name }}"></div>
+      </div>
+    </div>
+
     <mat-action-row>
-      <button mat-button color="primary">Next</button>
+      <div class="member-count">
+        {{ members.length }}/{{ maxTeamMembers }}
+      </div>
+      <button mat-button (click)="openDialog()">
+        <mat-icon class="mat-icon-person-color">person_add</mat-icon>
+      </button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
