@@ -1,0 +1,18 @@
+<div mat-dialog-content>
+  <form [formGroup]="form" (ngSubmit)="save()" class="form">
+    <mat-form-field appearance="fill" class="form-field">
+      <input matInput placeholder="Name" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+      <textarea
+        matInput
+        placeholder="Description"
+        formControlName="description"
+      ></textarea>
+    </mat-form-field>
+    <div class="button-group">
+      <button mat-button type="button" (click)="onClose()">Cancel</button>
+      <button mat-button type="submit">Submit</button>
+    </div>
+  </form>
+</div>

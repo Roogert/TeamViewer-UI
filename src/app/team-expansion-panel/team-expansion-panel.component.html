@@ -1,15 +1,17 @@
 <mat-accordion>
-<mat-expansion-panel  [expanded]="true" class="full-width" *ngFor="let item of list">
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      {{item}}
-    </mat-panel-title>
-  </mat-expansion-panel-header>
+  <mat-expansion-panel
+    [expanded]="true"
+    class="full-width"
+    *ngFor="let team of teams"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ team.name }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
 
-
-  <mat-action-row>
-    <button mat-button color="primary" >Next</button>
-  </mat-action-row>
-
-</mat-expansion-panel>
+    <mat-action-row>
+      <button mat-button color="primary">Next</button>
+    </mat-action-row>
+  </mat-expansion-panel>
 </mat-accordion>
