@@ -1,10 +1,8 @@
-
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { TeamService } from 'src/app/services/team.service';
 import { Team } from 'src/app/models/team.model';
 import { MatDialog } from '@angular/material/dialog';
 import { MemberDialogComponent } from '../modals/member-dialog/member-dialog.component';
-
 
 @Component({
   selector: 'app-team-expansion-panel',
@@ -12,11 +10,29 @@ import { MemberDialogComponent } from '../modals/member-dialog/member-dialog.com
   styleUrls: ['./team-expansion-panel.component.scss'],
   //encapsulation: ViewEncapsulation.None
 })
-
 export class TeamExpansionPanelComponent implements OnInit {
   teams: Team[] = [];
 
+  members: member[] = [
+    { name: 'James Halfhill', photo: '' },
+    { name: 'Devin Gamestop', photo: '' },
+    { name: 'Aosu Yakoma', photo: '' },
+    { name: 'Tammy Panel', photo: '' },
+    { name: 'Jane Smith', photo: '' },
+    { name: 'Lucille Ball', photo: '' },
+    { name: 'Desi Arnaz', photo: '' },
+    { name: 'Kim Danger', photo: '' },
+    { name: 'Apple Coldplay', photo: '' },
+    { name: 'Moses Bean', photo: '' },
+    { name: 'Bethany Culver', photo: '' },
+    { name: 'Robert Bob', photo: '' },
+  ];
+  defaultPhoto: string = '/assets/images/avatar.png';
+
+  maxTeamMembers = 12;
+  panelOpenState = false;
   constructor(
+    private dialog: MatDialog,
     private teamService: TeamService,
     private changeDetectorRef: ChangeDetectorRef
   ) {}
@@ -33,50 +49,28 @@ export class TeamExpansionPanelComponent implements OnInit {
     });
   }
 
+  getMemberPhoto(member: member): string {
+    return member.photo || this.defaultPhoto;
+  }
 
-defaultPhoto: string = '/assets/images/avatar.png';
+  openDialog(): void {
+    const dialogRef = this.dialog.open(MemberDialogComponent, {
+      width: '35rem',
+      data: {},
+    });
 
-members: member[] = [
-  { name: 'James Halfhill', photo: '' },
-  { name: 'Devin Gamestop', photo: '' },
-  { name: 'Aosu Yakoma', photo: '' },
-  { name: 'Tammy Panel', photo: '' },
-  { name: 'Jane Smith', photo: '' },
-  { name: 'Lucille Ball', photo: '' },
-  { name: 'Desi Arnaz', photo: '' },
-  { name: 'Kim Danger', photo: '' },
-  { name: 'Apple Coldplay', photo: '' },
-  { name: 'Moses Bean', photo: '' },
-  { name: 'Bethany Culver', photo: '' },
-  { name: 'Robert Bob', photo: '' },
-];
-
-maxTeamMembers = 12;
-panelOpenState = false;
-
-constructor(private dialog: MatDialog) {}
-
-getMemberPhoto(member: member): string {
-  return member.photo || this.defaultPhoto;
-}
-
-openDialog(): void {
-  const dialogRef = this.dialog.open(MemberDialogComponent, {
-    width: '35rem',
-    data: {}
-  });
-
-  dialogRef.afterClosed().subscribe(result => {
-    // This is where the dialog close event is handled.
-  });
-}
+    dialogRef.afterClosed().subscribe((result) => {
+      // This is where the dialog close event is handled.
+    });
+  }
 
   addTeamMember(): void {
     if (this.members.length < this.maxTeamMembers) {
       this.members.push({ name: 'New Member', photo: '' });
       console.log('New team member added.');
     } else {
-      console.log('Cannot add more team members. Maximum limit reached.');}
+      console.log('Cannot add more team members. Maximum limit reached.');
+    }
   }
 
   removeTeamMember(index: number): void {
@@ -88,5 +82,4 @@ openDialog(): void {
 interface member {
   photo: string | null;
   name: string;
-
 }
