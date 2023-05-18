@@ -1,8 +1,9 @@
 <mat-accordion>
-  <mat-expansion-panel [expanded]="panelOpenState" class="full-width" *ngFor="let item of list">
+
+  <mat-expansion-panel [expanded]="panelOpenState" class="full-width" *ngFor="let team of teams">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        {{ item }}
+        {{ team.name }}
       </mat-panel-title>
     </mat-expansion-panel-header>
 

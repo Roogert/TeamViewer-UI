@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { TeamService } from 'src/app/services/team.service';
+import { Team } from 'src/app/models/team.model';
 import { MatDialog } from '@angular/material/dialog';
 import { MemberDialogComponent } from '../modals/member-dialog/member-dialog.component';
+
 
 @Component({
   selector: 'app-team-expansion-panel',
@@ -9,16 +13,26 @@ import { MemberDialogComponent } from '../modals/member-dialog/member-dialog.com
   //encapsulation: ViewEncapsulation.None
 })
 
-export class TeamExpansionPanelComponent {
-  // TODO: Get Team names from backend
-  list: string[] = [
-    'Red Jaguars',
-    'Blue Barracudas',
-    'Green Monkeys',
-    'Orange Iguanas',
-    'Purple Parrots',
-    'Silver Snakes',
-  ];
+export class TeamExpansionPanelComponent implements OnInit {
+  teams: Team[] = [];
+
+  constructor(
+    private teamService: TeamService,
+    private changeDetectorRef: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.showTeams();
+  }
+
+  showTeams() {
+    this.teamService.getAllTeams().subscribe((teams) => {
+      console.log(teams);
+      this.teams = teams;
+      this.changeDetectorRef.detectChanges();
+    });
+  }
+
 
 defaultPhoto: string = '/assets/images/avatar.png';
 
@@ -74,4 +88,5 @@ openDialog(): void {
 interface member {
   photo: string | null;
   name: string;
+
 }

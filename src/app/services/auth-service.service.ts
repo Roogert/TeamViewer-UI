@@ -33,6 +33,10 @@ export class AuthServiceService {
   isLoggedIn() {
     return this.loggedIn.asObservable();
   }
+  //allows access to authorization token :D
+  getToken(): string {
+    return this.cookie.get('token');
+  }
 
   login(email: string, password: string) {
     return this.http
