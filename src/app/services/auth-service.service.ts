@@ -30,13 +30,12 @@ export class AuthServiceService {
     }
   }
 
+  isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
   //allows access to authorization token :D
   getToken(): string {
     return this.cookie.get('token');
-  }
-
-  isLoggedIn() {
-    return this.loggedIn.asObservable();
   }
 
   login(email: string, password: string) {

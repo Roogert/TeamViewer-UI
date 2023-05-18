@@ -26,8 +26,8 @@ export class TeamService {
     return this.http.get<Team[]>(this.apiTeamUrl);
   }
 
-  createTeam(team: Team): Observable<Team> {
-    const headers = { Authorization: 'Bearer' + this.auth.getToken() };
+  createTeam(team: Team) {
+    const headers = { Authorization: 'Bearer ' + this.auth.getToken() };
     return this.http.post<Team>(this.apiTeamUrl, team, { headers });
   }
 }
