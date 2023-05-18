@@ -1,5 +1,5 @@
 <mat-accordion>
-  <mat-expansion-panel [expanded]="true" class="full-width" *ngFor="let item of list">
+  <mat-expansion-panel [expanded]="panelOpenState" class="full-width" *ngFor="let item of list">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{ item }}
@@ -16,7 +16,7 @@
       <div class="member-count">
         {{ members.length }}/{{ maxTeamMembers }}
       </div>
-      <button mat-button (click)="addTeamMember">
+      <button mat-button (click)="openDialog()">
         <mat-icon class="mat-icon-person-color">person_add</mat-icon>
       </button>
     </mat-action-row>
