@@ -1,22 +1,13 @@
 <mat-card-header>
-  <h2>{{TeamName}}</h2>
+  <h2>{{selectedTeamName}}</h2>
 </mat-card-header>
 
 
 <div class="container">
-  <div class="avatar">
-    <img src="/assets/images/red-jaguar-logo.png">
-    <p>Player 1<br>kid</p>
+  <div class="avatar" *ngFor="let member of members">
+    <img src="/assets/images/avatar.png">
+    <p>{{member.first_name}}  {{member.last_name}}<br>{{member.title}}</p>
   </div>
-  <div class="avatar">
-    <img src="/assets/images/red-jaguar-logo.png">
-   <p>Player 2<br>kid</p>
-  </div>
-  <div class="avatar">
-    <img src="/assets/images/red-jaguar-logo.png">
-    <p>Player 1<br>kid</p>
-  </div>
-
 </div>
 
 

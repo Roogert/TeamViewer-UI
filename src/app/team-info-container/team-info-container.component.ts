@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Member } from '../models/member.model';
 
 @Component({
   selector: 'app-team-info-container',
@@ -7,7 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TeamInfoContainerComponent implements OnInit {
 
-@Input() TeamName:string="Red Jaguars";
+@Input() selectedTeamName: string = "";
+@Input() members: Member[]=[];
 
 ngOnInit(): void {
 

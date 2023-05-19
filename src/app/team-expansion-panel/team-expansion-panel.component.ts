@@ -3,6 +3,7 @@ import { TeamService } from 'src/app/services/team.service';
 import { Team } from 'src/app/models/team.model';
 import { MatDialog } from '@angular/material/dialog';
 import { MemberDialogComponent } from '../modals/member-dialog/member-dialog.component';
+import { Member } from '../models/member.model';
 
 @Component({
   selector: 'app-team-expansion-panel',
@@ -14,6 +15,8 @@ export class TeamExpansionPanelComponent implements OnInit {
   teams: Team[] = [];
 
   @Output() isExpanded:EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() selectedTeamName:EventEmitter<string> =new EventEmitter<string>();
+  @Output() selectedMembers:EventEmitter<Member[]> =new EventEmitter<Member[]>();
 
   members: member[] = [
     { name: 'James Halfhill', photo: '' },
@@ -29,6 +32,22 @@ export class TeamExpansionPanelComponent implements OnInit {
     { name: 'Bethany Culver', photo: '' },
     { name: 'Robert Bob', photo: '' },
   ];
+
+  members1: Member[] = [
+    { first_name: 'James Halfhill', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Devin Gamestop', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Aosu Yakoma', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Tammy Panel', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Jane Smith', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Lucille Ball', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Desi Arnaz', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Kim Danger', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Apple Coldplay', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Moses Bean', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Bethany Culver', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Robert Bob', last_name: 'smith', title: 'software engineer'},
+  ];
+
   defaultPhoto: string = '/assets/images/avatar.png';
 
   maxTeamMembers = 12;
@@ -80,14 +99,17 @@ export class TeamExpansionPanelComponent implements OnInit {
     console.log('Team member removed.');
   }
 
-  expandedPanel(){
+  expandedPanel(team:any){
     this.isExpanded.emit(true);
-    console.log("works")
+    this.selectedTeamName.emit(team.name);
+    this.selectedMembers.emit(this.members1);
   }
 
   closeExpanded(){
   console.log("close");
   }
+
+
 
 }
 

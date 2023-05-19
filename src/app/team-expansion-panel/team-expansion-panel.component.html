@@ -1,6 +1,6 @@
 <mat-accordion>
 
-  <mat-expansion-panel [expanded]="panelOpenState" class="full-width" *ngFor="let team of teams" (opened)="expandedPanel()" (closed)="closeExpanded()">
+  <mat-expansion-panel [expanded]="panelOpenState" class="full-width" *ngFor="let team of teams" (opened)="expandedPanel(team)" (closed)="closeExpanded()">
     <mat-expansion-panel-header>
       <mat-panel-title>
         {{ team.name }}
