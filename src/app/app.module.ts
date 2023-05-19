@@ -15,6 +15,11 @@ import { TeamExpansionPanelComponent } from './team-expansion-panel/team-expansi
 import { SignInModalComponent } from './modals/sign-in-modal/sign-in-modal.component';
 
 import { SignUpModalComponent } from './modals/sign-up-modal/sign-up-modal.component';
+
+import { TeamDialogComponent } from './modals/team-dialog-modal/team-dialog.component';
+
+import { MemberDialogComponent } from './modals/member-dialog/member-dialog.component';
+
 import { TeamInfoContainerComponent } from './team-info-container/team-info-container.component';
 
 @NgModule({
@@ -27,6 +32,9 @@ import { TeamInfoContainerComponent } from './team-info-container/team-info-cont
     TeamExpansionPanelComponent,
     SignInModalComponent,
     SignUpModalComponent,
+      TeamDialogComponent,
+      MemberDialogComponent,
+
     TeamInfoContainerComponent,
   ],
   imports: [
