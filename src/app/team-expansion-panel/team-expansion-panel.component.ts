@@ -43,7 +43,6 @@ export class TeamExpansionPanelComponent implements OnInit {
 
   showTeams() {
     this.teamService.getAllTeams().subscribe((teams) => {
-      console.log(teams);
       this.teams = teams;
       this.changeDetectorRef.detectChanges();
     });
@@ -56,7 +55,9 @@ export class TeamExpansionPanelComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(MemberDialogComponent, {
       width: '35rem',
-      data: {},
+      data: {
+        teams: this.teams,
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
