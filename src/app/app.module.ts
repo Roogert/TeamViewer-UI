@@ -20,6 +20,7 @@ import { TeamDialogComponent } from './modals/team-dialog-modal/team-dialog.comp
 
 import { MemberDialogComponent } from './modals/member-dialog/member-dialog.component';
 
+import { TeamInfoContainerComponent } from './team-info-container/team-info-container.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { MemberDialogComponent } from './modals/member-dialog/member-dialog.comp
       TeamDialogComponent,
       MemberDialogComponent,
 
+    TeamInfoContainerComponent,
   ],
   imports: [
     FormsModule,
