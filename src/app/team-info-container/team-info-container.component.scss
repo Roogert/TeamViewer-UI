@@ -1,0 +1,30 @@
+h2{
+  padding-left: 1em;
+  padding-top: .5em;
+}
+
+p{
+  margin-left: .5em;
+}
+
+img{
+  height: 50px;
+  padding-left: 2em;
+  padding-bottom: 1em;
+
+  // float: left;
+}
+
+.container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 5px;
+ }
+
+ .avatar{
+  display: flex;
+  align-items: center;
+
+
+ }
