@@ -13,10 +13,12 @@ import { Member } from '../models/member.model';
 })
 export class TeamExpansionPanelComponent implements OnInit {
   teams: Team[] = [];
+  selectedMember: Member | null = null;
 
   @Output() isExpanded:EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() selectedTeamName:EventEmitter<string> =new EventEmitter<string>();
   @Output() selectedMembers:EventEmitter<Member[]> =new EventEmitter<Member[]>();
+  @Output() memberSelected:EventEmitter<Member> = new EventEmitter<Member>();
 
   members: member[] = [
     { name: 'James Halfhill', photo: '' },
@@ -34,23 +36,24 @@ export class TeamExpansionPanelComponent implements OnInit {
   ];
 
   members1: Member[] = [
-    { first_name: 'James Halfhill', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Devin Gamestop', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Aosu Yakoma', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Tammy Panel', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Jane Smith', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Lucille Ball', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Desi Arnaz', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Kim Danger', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Apple Coldplay', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Moses Bean', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Bethany Culver', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Robert Bob', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'James', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Devin', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Aosu', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Tammy', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Jane', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Lucille', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Desi', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Kim', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Apple', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Moses', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Bethany', last_name: 'smith', title: 'software engineer'},
+    { first_name: 'Robert', last_name: 'smith', title: 'software engineer'},
   ];
 
   defaultPhoto: string = '/assets/images/avatar.png';
 
   maxTeamMembers = 12;
+
   panelOpenState = false;
   constructor(
     private dialog: MatDialog,
@@ -70,8 +73,8 @@ export class TeamExpansionPanelComponent implements OnInit {
     });
   }
 
-  getMemberPhoto(member: member): string {
-    return member.photo || this.defaultPhoto;
+  getMemberPhoto(member: Member): string {
+    return this.defaultPhoto;
   }
 
   openDialog(): void {
@@ -83,6 +86,11 @@ export class TeamExpansionPanelComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       // This is where the dialog close event is handled.
     });
+  }
+
+  openMemberDetails(member: Member) {
+    this.selectedMember = member;
+    this.memberSelected.emit(member);
   }
 
   addTeamMember(): void {
@@ -106,13 +114,10 @@ export class TeamExpansionPanelComponent implements OnInit {
   }
 
   closeExpanded(){
-  console.log("close");
+    this.isExpanded.emit(false);
   }
 
-
-
 }
-
 
 interface member {
   photo: string | null;

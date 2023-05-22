@@ -13,6 +13,8 @@ export class TeamListContainerComponent implements OnInit {
   isExpanded: boolean = false;
   selectedTeamName: string = "";
   selectedMembers: Member[]=[];
+  isMemberSelected: boolean = false;
+  selectedMember: Member = {} as Member;
 
   constructor(public dialog: MatDialog) {}
 
@@ -35,14 +37,22 @@ export class TeamListContainerComponent implements OnInit {
 
   handleExpanded(isExpanded:boolean){
     this.isExpanded = isExpanded;
+    console.log(isExpanded);
   }
 
   handleSelectedTeam(selectedTeamName:string){
     this.selectedTeamName = selectedTeamName;
+    console.log(selectedTeamName);
   }
 
   handleSelectedMembers(selectedMembers: Member[]){
     this.selectedMembers = selectedMembers;
+    console.log(selectedMembers);
+  }
+
+  handleIsMemberSelected(member: Member) {
+    this.isMemberSelected = member !== null;
+    this.selectedMember = member;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Member } from '../models/member.model';
 
 @Component({
@@ -6,13 +6,20 @@ import { Member } from '../models/member.model';
   templateUrl: './team-info-container.component.html',
   styleUrls: ['./team-info-container.component.scss']
 })
-export class TeamInfoContainerComponent implements OnInit {
+export class TeamInfoContainerComponent {
 
-@Input() selectedTeamName: string = "";
-@Input() members: Member[]=[];
+@Input() selectedTeamName: string;
+@Input() members: Member[]
+selectedMember: Member | null;
 
-ngOnInit(): void {
+constructor() {
+  this.selectedTeamName = 'Team Name';
+  this.members = [];
+  this.selectedMember = null;
+}
 
+openMemberDetails(member: Member) {
+  this.selectedMember = member;
 }
 
 }
