@@ -1,3 +1,4 @@
+
 <mat-card-header>
   <h2>{{selectedTeamName}}</h2>
 </mat-card-header>
@@ -11,6 +12,15 @@
 </div>
 
 <mat-action-row>
-  <mat-icon>edit</mat-icon>
-  <mat-icon>archive</mat-icon>
+  <div class="tooltip" matTooltip="Edit {{selectedTeamName}}">
+    <button mat-button>
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  <div class="tooltip" matTooltip="Archive {{selectedTeamName}}">
+    <button mat-button>
+      <mat-icon>archive</mat-icon>
+    </button>
+  </div>
 </mat-action-row>
+

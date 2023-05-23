@@ -1,6 +1,8 @@
 h2{
   padding-left: 1em;
   padding-top: .5em;
+  color: #455A64;
+  padding-bottom: 10px;
 }
 
 p{
@@ -25,6 +27,19 @@ img{
  .avatar{
   display: flex;
   align-items: center;
-
-
  }
+
+.mat-icon{
+  color: #455a64de;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
