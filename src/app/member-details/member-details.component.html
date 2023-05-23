@@ -1,4 +1,14 @@
+<mat-card-header class="member-detail-header">
+  <mat-card-title>Selected Team Goes Here > {{ member?.first_name }} {{ member?.last_name}}</mat-card-title>
+</mat-card-header>
+
+<mat-divider class="divider"></mat-divider>
+
 <div class="member-details" *ngIf="member">
-  <img class="member-photo" src="/assets/images/avatar.png">
-  <p>{{ member.first_name }} {{ member.last_name }}</p><br>{{ member.title }}
+  <div class="first-row">
+    <img class="member-photo" src="/assets/images/avatar.png">
+  </div>
+  <div class="second-row">
+    <p class="member-information">{{ member.first_name }} {{ member.last_name }}<br>{{ member.title }}</p>
+  </div>
 </div>
