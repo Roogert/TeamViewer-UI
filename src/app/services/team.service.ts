@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AuthServiceService } from './auth-service.service';
 
 interface Team {
+  id?: number;
   name: string;
   description: string;
 }
@@ -22,12 +23,24 @@ export class TeamService {
     return this.http.get<Team>(`${this.apiTeamUrl}/${id}`);
   }
 
-  getAllTeams(): Observable<Team[]> {
-    return this.http.get<Team[]>(this.apiTeamUrl);
+  getAllTeams(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiTeamUrl);
   }
 
-  createTeam(team: Team) {
+  createTeam(team: Team): Observable<Team> {
     const headers = { Authorization: 'Bearer ' + this.auth.getToken() };
     return this.http.post<Team>(this.apiTeamUrl, team, { headers });
+  }
+
+  updateTeam(team: Team): Observable<Team> {
+    const headers = { Authorization: 'Bearer ' + this.auth.getToken() };
+    return this.http.put<Team>(`${this.apiTeamUrl}/${team.id}`, team, {
+      headers,
+    });
+  }
+
+  deleteTeam(id: number): Observable<{}> {
+    const headers = { Authorization: 'Bearer ' + this.auth.getToken() };
+    return this.http.delete(`${this.apiTeamUrl}/${id}`, { headers });
   }
 }

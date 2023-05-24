@@ -1,13 +1,12 @@
 <mat-card-header>
-  <h2>{{selectedTeamName}}</h2>
+  <h2>{{ selectedTeamName }}</h2>
 </mat-card-header>
-
 
 <div class="container">
   <div class="avatar" *ngFor="let member of members">
-    <img src="/assets/images/avatar.png">
-    <p>{{member.first_name}}  {{member.last_name}}<br>{{member.title}}</p>
+    <img src="/assets/images/avatar.png" />
+    <p>
+      {{ member.first_name }} {{ member.last_name }}<br />{{ member.job_title }}
+    </p>
   </div>
 </div>
-
-
