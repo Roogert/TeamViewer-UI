@@ -1,30 +1,36 @@
+<div>
+  <form [formGroup]="memberForm" (ngSubmit)="saveDialog()" class="form">
     <div class="first-row">
-        <mat-form-field>
-          <input matInput placeholder="First Name" [(ngModel)]="firstName">
-        </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="First Name" formControlName="first_name" />
+      </mat-form-field>
 
-        <mat-form-field>
-          <input matInput placeholder="Last Name" [(ngModel)]="lastName">
-        </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Last Name" formControlName="last_name" />
+      </mat-form-field>
     </div>
     <div class="second-row">
-        <mat-form-field>
-          <mat-label>Title</mat-label>
-            <mat-select [(ngModel)]="selectedTitle">
-              <mat-option *ngFor="let title of titles" [value]="title">{{ title }}</mat-option>
-            </mat-select>
-        </mat-form-field>
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <mat-select formControlName="title">
+          <mat-option value="Software Engineer">Software Engineer</mat-option>
+          <mat-option value="Junior Developer">Junior Developer</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>Team</mat-label>
-          <mat-select [(ngModel)]="selectedTeam">
-            <mat-option *ngFor="let team of teams" [value]="team">
-              {{ team }}</mat-option>
-          </mat-select>
-        </mat-form-field>
+      <mat-form-field>
+        <mat-label>Team</mat-label>
+        <mat-select formControlName="team">
+          <mat-option *ngFor="let team of teams" [value]="team">
+            {{ team.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
 
-<div class="buttons" mat-dialog-actions>
-    <button mat-button (click)="closeDialog()">Cancel</button>
-    <button mat-button [mat-dialog-close]="{ firstName: firstName, lastName: lastName, title: selectedTitle, team: selectedTeam }">Submit</button>
+    <div class="buttons" mat-dialog-actions>
+      <button mat-button (click)="closeDialog()">Cancel</button>
+      <button mat-button type="submit">Submit</button>
+    </div>
+  </form>
 </div>

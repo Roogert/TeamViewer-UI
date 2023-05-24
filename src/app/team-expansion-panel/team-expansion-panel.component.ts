@@ -1,9 +1,16 @@
-import { Component, OnInit, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { TeamService } from 'src/app/services/team.service';
 import { Team } from 'src/app/models/team.model';
 import { MatDialog } from '@angular/material/dialog';
 import { MemberDialogComponent } from '../modals/member-dialog/member-dialog.component';
-import { Member } from '../models/member.model';
+
+import { MemberService } from '../services/member.service';
 
 @Component({
   selector: 'app-team-expansion-panel',
@@ -13,74 +20,48 @@ import { Member } from '../models/member.model';
 })
 export class TeamExpansionPanelComponent implements OnInit {
   teams: Team[] = [];
+  members: Member[] = [];
+
   selectedMember: Member | null = null;
 
   @Output() isExpanded:EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() selectedTeamName:EventEmitter<string> =new EventEmitter<string>();
   @Output() selectedMembers:EventEmitter<Member[]> =new EventEmitter<Member[]>();
   @Output() memberSelected:EventEmitter<Member> = new EventEmitter<Member>();
+  @Output() selectedTeam: EventEmitter<Team> = new EventEmitter<Team>();
+  
 
-  members: member[] = [
-    { name: 'James Halfhill', photo: '' },
-    { name: 'Devin Gamestop', photo: '' },
-    { name: 'Aosu Yakoma', photo: '' },
-    { name: 'Tammy Panel', photo: '' },
-    { name: 'Jane Smith', photo: '' },
-    { name: 'Lucille Ball', photo: '' },
-    { name: 'Desi Arnaz', photo: '' },
-    { name: 'Kim Danger', photo: '' },
-    { name: 'Apple Coldplay', photo: '' },
-    { name: 'Moses Bean', photo: '' },
-    { name: 'Bethany Culver', photo: '' },
-    { name: 'Robert Bob', photo: '' },
-  ];
-
-  members1: Member[] = [
-    { first_name: 'James', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Devin', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Aosu', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Tammy', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Jane', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Lucille', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Desi', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Kim', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Apple', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Moses', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Bethany', last_name: 'smith', title: 'software engineer'},
-    { first_name: 'Robert', last_name: 'smith', title: 'software engineer'},
-  ];
 
   defaultPhoto: string = '/assets/images/avatar.png';
 
   maxTeamMembers = 12;
 
   panelOpenState = false;
+
   constructor(
+    private memberService: MemberService,
     private dialog: MatDialog,
     private teamService: TeamService,
     private changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.showTeams();
+    this.teamService.getAllTeams().subscribe((teams) => (this.teams = teams));
   }
 
-  showTeams() {
-    this.teamService.getAllTeams().subscribe((teams) => {
-      console.log(teams);
-      this.teams = teams;
-      this.changeDetectorRef.detectChanges();
-    });
-  }
 
-  getMemberPhoto(member: Member): string {
+
+
+
+  getMemberPhoto() {
     return this.defaultPhoto;
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(MemberDialogComponent, {
       width: '35rem',
-      data: {},
+      data: {
+        teams: this.teams,
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -95,7 +76,6 @@ export class TeamExpansionPanelComponent implements OnInit {
 
   addTeamMember(): void {
     if (this.members.length < this.maxTeamMembers) {
-      this.members.push({ name: 'New Member', photo: '' });
       console.log('New team member added.');
     } else {
       console.log('Cannot add more team members. Maximum limit reached.');
@@ -107,11 +87,12 @@ export class TeamExpansionPanelComponent implements OnInit {
     console.log('Team member removed.');
   }
 
-  expandedPanel(team:any){
+  expandedPanel(team: any) {
     this.isExpanded.emit(true);
-    this.selectedTeamName.emit(team.name);
-    this.selectedMembers.emit(this.members1);
+    this.selectedTeam.emit(team);
+    this.selectedMembers.emit(this.members);
   }
+
 
   closeExpanded(){
     this.isExpanded.emit(false);
@@ -119,7 +100,10 @@ export class TeamExpansionPanelComponent implements OnInit {
 
 }
 
-interface member {
-  photo: string | null;
-  name: string;
+
+interface Member {
+  first_name: string;
+  last_name: string;
+  job_title: string;
+  team_id: number;
 }

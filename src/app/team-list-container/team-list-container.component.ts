@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeamDialogComponent } from '../modals/team-dialog-modal/team-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Member } from '../models/member.model';
+import { Team } from '../models/team.model';
 
 @Component({
   selector: 'app-team-list-container',
@@ -9,19 +10,20 @@ import { Member } from '../models/member.model';
   styleUrls: ['./team-list-container.component.scss'],
 })
 export class TeamListContainerComponent implements OnInit {
-
   isExpanded: boolean = false;
-  selectedTeamName: string = "";
-  selectedMembers: Member[]=[];
+
+  selectedTeam: Team = {} as Team;
+  selectedMembers: Member[] = [];
   isMemberSelected: boolean = false;
   selectedMember: Member = {} as Member;
+
+
 
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   addTeam() {}
-
 
   openTeamDialog(): void {
     const dialogRef = this.dialog.open(TeamDialogComponent, {
@@ -35,17 +37,20 @@ export class TeamListContainerComponent implements OnInit {
     });
   }
 
-  handleExpanded(isExpanded:boolean){
+  handleExpanded(isExpanded: boolean) {
     this.isExpanded = isExpanded;
     console.log(isExpanded);
   }
 
-  handleSelectedTeam(selectedTeamName:string){
-    this.selectedTeamName = selectedTeamName;
-    console.log(selectedTeamName);
+
+
+  handleSelectedTeam(selectedTeam: Team) {
+    this.selectedTeam = selectedTeam;
+    console.log(selectedTeam);
+
   }
 
-  handleSelectedMembers(selectedMembers: Member[]){
+  handleSelectedMembers(selectedMembers: Member[]) {
     this.selectedMembers = selectedMembers;
     console.log(selectedMembers);
   }
@@ -54,5 +59,4 @@ export class TeamListContainerComponent implements OnInit {
     this.isMemberSelected = member !== null;
     this.selectedMember = member;
   }
-
 }
