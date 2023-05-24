@@ -7,22 +7,13 @@ import { Team } from '../models/team.model';
   templateUrl: './team-info-container.component.html',
   styleUrls: ['./team-info-container.component.scss'],
 })
-
 export class TeamInfoContainerComponent {
- @Input() selectedTeam: Team = {} as Team;
- @Input() members: Member[] = [];
-  
-selectedMember: Member | null;
+  @Input() selectedTeam: Team = {} as Team;
+  @Input() members: Member[] = [];
 
+  selectedMember: Member = {} as Member;
 
-
-openMemberDetails(member: Member) {
-  this.selectedMember = member;
-}
-
-
- 
-
-
-
+  openMemberDetails(member: Member) {
+    this.selectedMember = member;
+  }
 }

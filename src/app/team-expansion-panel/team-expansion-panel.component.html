@@ -13,14 +13,13 @@
     </mat-expansion-panel-header>
 
     <div class="member-photos">
-
-      <div class="member-avatar"
-            *ngFor="let member of team.members">
-        <div class="avatar-image"
-            [ngStyle]="{'background-image': 'url(' + getMemberPhoto(member) + ')'}"
-            matTooltip="{{ member.first_name }} {{member.last_name}}"
-            (click)="openMemberDetails(member)">
-        </div>
+      <div class="member-avatar" *ngFor="let member of team.members">
+        <div
+          class="avatar-image"
+          [ngStyle]="{ 'background-image': 'url(' + getMemberPhoto() + ')' }"
+          matTooltip="{{ member.first_name }} {{ member.last_name }}"
+          (click)="openMemberDetails(member)"
+        ></div>
       </div>
     </div>
 

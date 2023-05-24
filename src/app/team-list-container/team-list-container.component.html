@@ -6,8 +6,12 @@
       </mat-card-header>
       <mat-divider class="divider"></mat-divider>
       <mat-card-content class="content-area">
-
-        <app-team-expansion-panel (isExpanded)="handleExpanded($event)" (selectedTeam)="handleSelectedTeam($event)" (selectedMembers)="handleSelectedMembers($event)" (memberSelected)="handleIsMemberSelected($event)"></app-team-expansion-panel>
+        <app-team-expansion-panel
+          (isExpanded)="handleExpanded($event)"
+          (selectedTeam)="handleSelectedTeam($event)"
+          (selectedMembers)="handleSelectedMembers($event)"
+          (memberSelected)="handleIsMemberSelected($event)"
+        ></app-team-expansion-panel>
       </mat-card-content>
       <mat-divider class="divider"></mat-divider>
       <mat-action-row>
@@ -22,13 +26,18 @@
 
   <div class="card">
     <mat-card>
-
       <mat-card-content class="info-container">
-        <app-member-details *ngIf="isMemberSelected && isExpanded" [member]="selectedMember"></app-member-details>
-        <app-team-info-container *ngIf="isExpanded && !isMemberSelected" [selectedTeam]="selectedTeam" [members]="selectedMembers"></app-team-info-container>
+        <app-member-details
+          *ngIf="isMemberSelected && isExpanded"
+          [member]="selectedMember"
+        ></app-member-details>
+        <app-team-info-container
+          *ngIf="isExpanded && !isMemberSelected"
+          [selectedTeam]="selectedTeam"
+          [members]="selectedTeam.members"
+        ></app-team-info-container>
         <p *ngIf="!isExpanded">Select a Team</p>
       </mat-card-content>
-
     </mat-card>
   </div>
 </div>
