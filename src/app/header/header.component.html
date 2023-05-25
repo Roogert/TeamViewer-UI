@@ -9,7 +9,9 @@
   <!-- TODO:ADD USER FIRST_NAME, LAST_NAME -->
 
   <!-- User Name will display if user is signed in! -->
-  <div class="placeholder-text" *ngIf="!userNotLogged">User Name</div>
+  <div class="placeholder-text" *ngIf="!userNotLogged">
+    {{ user?.first_name }} {{ user?.last_name }} {{ user?.email }}
+  </div>
   <!-- This modal for User Sign Up -->
   <div>
     <button mat-button *ngIf="userNotLogged" (click)="openSignupDialog()">

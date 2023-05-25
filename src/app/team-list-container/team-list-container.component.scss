@@ -10,37 +10,38 @@
   width: 45%;
   height: 550px;
   // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
 }
 
 .card mat-card {
   height: 100%;
   padding: 0 0 0 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .info-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  color: #455A64;
+  color: #455a64;
+  flex-grow: 1; // Added this line to allow this section to fill the remaining space
 }
 
 // left side
-.content-area{
+.content-area {
   width: 100%;
-  height: 78%;
+  min-height: 78%; // Changed from height to min-height
   box-shadow: none;
   padding: 0 0 0 0;
+  overflow: auto;
 }
 
 .left-container-header {
-  color: #455A64;
+  color: #455a64;
   padding-bottom: 10px;
 }
 
-
-.mat-icon{
+.mat-icon {
   color: #455a64de;
 }
 

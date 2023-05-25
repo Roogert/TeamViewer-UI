@@ -13,7 +13,7 @@ export class MemberDialogComponent implements OnInit {
   memberForm: FormGroup = new FormGroup({
     first_name: new FormControl('', [Validators.required]),
     last_name: new FormControl('', [Validators.required]),
-    title: new FormControl('', [Validators.required]),
+    job_title: new FormControl('', [Validators.required]),
     team: new FormControl('', [Validators.required]),
   });
 
@@ -38,7 +38,7 @@ export class MemberDialogComponent implements OnInit {
       const member = {
         first_name: this.memberForm.get('first_name')?.value,
         last_name: this.memberForm.get('last_name')?.value,
-        job_title: this.memberForm.get('title')?.value,
+        job_title: this.memberForm.get('job_title')?.value,
         team_id: this.memberForm.get('team')?.value.id,
       };
 

@@ -24,17 +24,17 @@ export class TeamExpansionPanelComponent implements OnInit {
 
   selectedMember: Member | null = null;
 
-  @Output() isExpanded:EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() selectedMembers:EventEmitter<Member[]> =new EventEmitter<Member[]>();
-  @Output() memberSelected:EventEmitter<Member> = new EventEmitter<Member>();
+  @Output() isExpanded: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() selectedMembers: EventEmitter<Member[]> = new EventEmitter<
+    Member[]
+  >();
+  @Output() memberSelected: EventEmitter<Member> = new EventEmitter<Member>();
   @Output() selectedTeam: EventEmitter<Team> = new EventEmitter<Team>();
-  
-
 
   defaultPhoto: string = '/assets/images/avatar.png';
 
   maxTeamMembers = 12;
-
+  showErrorMessage: boolean = false;
   panelOpenState = false;
 
   constructor(
@@ -47,10 +47,6 @@ export class TeamExpansionPanelComponent implements OnInit {
   ngOnInit(): void {
     this.teamService.getAllTeams().subscribe((teams) => (this.teams = teams));
   }
-
-
-
-
 
   getMemberPhoto() {
     return this.defaultPhoto;
@@ -77,9 +73,21 @@ export class TeamExpansionPanelComponent implements OnInit {
   addTeamMember(): void {
     if (this.members.length < this.maxTeamMembers) {
       console.log('New team member added.');
+      this.checkTeamSize();
     } else {
       console.log('Cannot add more team members. Maximum limit reached.');
     }
+  }
+
+  checkTeamSize(): void {
+    this.teams.forEach((team) => {
+      if (team.members.length > this.maxTeamMembers) {
+        this.showErrorMessage = true;
+        setTimeout(() => {
+          this.showErrorMessage = false;
+        }, 3000);
+      }
+    });
   }
 
   removeTeamMember(index: number): void {
@@ -93,13 +101,10 @@ export class TeamExpansionPanelComponent implements OnInit {
     this.selectedMembers.emit(this.members);
   }
 
-
-  closeExpanded(){
+  closeExpanded() {
     this.isExpanded.emit(false);
   }
-
 }
-
 
 interface Member {
   first_name: string;
