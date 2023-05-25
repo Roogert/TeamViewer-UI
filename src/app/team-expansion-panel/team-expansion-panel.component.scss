@@ -1,4 +1,4 @@
-mat-expansion-panel{
+mat-expansion-panel {
   width: 100%;
   margin: 0;
   border-radius: 0;
@@ -6,7 +6,7 @@ mat-expansion-panel{
   box-shadow: none;
 }
 
-mat-accordian{
+mat-accordian {
   padding: 0 0 0 0;
   border-radius: 0;
   box-shadow: none;
@@ -71,4 +71,13 @@ mat-accordian{
   justify-content: right;
   color: #455a64de;
   font-size: 14px;
+}
+
+.member-counter {
+  margin-left: 10px; // Adjust as needed
+}
+
+.error-message {
+  color: red;
+  margin-left: 10px; // Adjust as needed
 }

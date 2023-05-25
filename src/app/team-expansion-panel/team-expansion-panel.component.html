@@ -25,9 +25,18 @@
 
     <mat-action-row>
       <div class="member-count">
-        {{ team.members.length }}/{{ maxTeamMembers }}
+        <span class="error-message" *ngIf="showErrorMessage">
+          Team size limited to 12 members </span
+        ><span class="member-counter">
+          {{ team.members.length }}/{{ maxTeamMembers }}</span
+        >
       </div>
-      <button mat-button (click)="openDialog()">
+
+      <button
+        mat-button
+        [disabled]="team.members.length >= maxTeamMembers"
+        (click)="openDialog()"
+      >
         <mat-icon class="mat-icon-person-color">person_add</mat-icon>
       </button>
     </mat-action-row>

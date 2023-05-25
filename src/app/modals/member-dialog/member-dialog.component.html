@@ -3,19 +3,28 @@
     <div class="first-row">
       <mat-form-field>
         <input matInput placeholder="First Name" formControlName="first_name" />
+        <mat-error *ngIf="memberForm.controls['first_name'].invalid">
+          Please provide a First name.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <input matInput placeholder="Last Name" formControlName="last_name" />
+        <mat-error *ngIf="memberForm.controls['last_name'].invalid">
+          Please provide a Last name.
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="second-row">
       <mat-form-field>
         <mat-label>Title</mat-label>
-        <mat-select formControlName="title">
+        <mat-select formControlName="job_title">
           <mat-option value="Software Engineer">Software Engineer</mat-option>
           <mat-option value="Junior Developer">Junior Developer</mat-option>
         </mat-select>
+        <mat-error *ngIf="memberForm.controls['job_title'].invalid">
+          Please select a Title.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -25,12 +34,17 @@
             {{ team.name }}
           </mat-option>
         </mat-select>
+        <mat-error *ngIf="memberForm.controls['team'].invalid">
+          Please select a Team.
+        </mat-error>
       </mat-form-field>
     </div>
 
     <div class="buttons" mat-dialog-actions>
       <button mat-button (click)="closeDialog()">Cancel</button>
-      <button mat-button type="submit">Submit</button>
+      <button mat-button type="submit" [disabled]="memberForm.invalid">
+        Submit
+      </button>
     </div>
   </form>
 </div>

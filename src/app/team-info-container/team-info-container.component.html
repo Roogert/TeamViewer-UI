@@ -4,7 +4,6 @@
 
 <div class="container">
   <div class="avatar" *ngFor="let member of members">
-
     <img src="/assets/images/avatar.png" />
     <p>
       {{ member.first_name }} {{ member.last_name }}<br />{{ member.job_title }}
@@ -14,14 +13,13 @@
 
 <mat-action-row>
   <div class="tooltip" matTooltip="Edit {{ selectedTeam.name }}">
-    <button mat-button>
+    <button mat-button (click)="editTeamDialog(selectedTeam)">
       <mat-icon>edit</mat-icon>
     </button>
   </div>
-  <div class="tooltip" matTooltip="Archive {{selectedTeam.name}">
-    <button mat-button>
+  <div class="tooltip" matTooltip="Archive {{ selectedTeam.name }}">
+    <button mat-button (click)="archiveTeamDialog(selectedTeam)">
       <mat-icon>archive</mat-icon>
     </button>
   </div>
 </mat-action-row>
-

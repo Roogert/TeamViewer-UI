@@ -3,6 +3,7 @@ import { SignInModalComponent } from '../modals/sign-in-modal/sign-in-modal.comp
 import { SignUpModalComponent } from '../modals/sign-up-modal/sign-up-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthServiceService } from '../services/auth-service.service';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,8 @@ import { AuthServiceService } from '../services/auth-service.service';
 })
 export class HeaderComponent implements OnInit {
   userNotLogged: boolean = true;
+  user: User | null = null;
+
   constructor(
     public dialog: MatDialog,
     public authService: AuthServiceService,
@@ -18,6 +21,7 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.user = this.authService.getCurrentUser();
     this.authService.isLoggedIn().subscribe((isLoggedIn) => {
       this.userNotLogged = !isLoggedIn;
       this.changeDetectorRef.detectChanges();
