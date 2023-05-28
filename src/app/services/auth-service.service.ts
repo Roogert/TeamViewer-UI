@@ -6,6 +6,11 @@ import { environment } from 'src/environments/environment';
 
 interface LoginResponse {
   token: string;
+  user: {
+    first_name: string;
+    last_name: string;
+    email: string;
+  };
 }
 
 interface User {
@@ -33,9 +38,15 @@ export class AuthServiceService {
   isLoggedIn() {
     return this.loggedIn.asObservable();
   }
+
   //allows access to authorization token :D
   getToken(): string {
     return this.cookie.get('token');
+  }
+
+  getCurrentUser(): User | null {
+    const user = this.cookie.get('user');
+    return user ? JSON.parse(user) : null;
   }
 
   login(email: string, password: string) {
@@ -46,7 +57,8 @@ export class AuthServiceService {
       })
       .pipe(
         tap((response: any) => {
-          this.cookie.set('token', response.token); //creates a cookie instead of local storing
+          this.cookie.set('token', response.token);
+          this.cookie.set('user', JSON.stringify(response.user)); // Store user data in a cookie to access laterz
           this.loggedIn.next(true);
           location.reload();
         })
@@ -55,6 +67,7 @@ export class AuthServiceService {
 
   logout() {
     this.cookie.delete('token');
+    this.cookie.delete('user'); // Delete user data
     this.loggedIn.next(false);
     location.reload();
   }
