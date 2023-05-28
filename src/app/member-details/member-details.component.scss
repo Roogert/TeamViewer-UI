@@ -1,26 +1,35 @@
-.member-detail-header {
-  display: flex;
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  // align-items:flex-start;
+  // justify-content:left;
+  // height: 100%;
+  // test color to find card: background-color: red;
 }
 
-.first-row {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  padding-top: 10px;
-}
-
-.second-row {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.member-photo {
-  display: flex;
-  border: 1px;
-  border-radius: 4px;
+.content-area {
+  display: grid;
+  // grid-template-columns: repeat(1, 2fr);
+  grid-template-rows: repeat(1, 25vw);
+  grid-gap: 0;
   padding: 5px;
-  width: 150px;
+}
+
+// paragraph area with content
+.member-information {
+  display: inline-block;
+  font-size: 20px;
+  line-height: 1.6;
+  padding-top: 100px;
+}
+
+img {
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+  width: 200px;
+
 }

@@ -22,6 +22,8 @@ import { MemberDialogComponent } from './modals/member-dialog/member-dialog.comp
 
 import { TeamInfoContainerComponent } from './team-info-container/team-info-container.component';
 import { MemberDetailsComponent } from './member-details/member-details.component';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { MemberDetailsComponent } from './member-details/member-details.componen
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    ScrollingModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

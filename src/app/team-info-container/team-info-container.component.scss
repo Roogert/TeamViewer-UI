@@ -1,45 +1,71 @@
-h2{
-  padding-left: 1em;
-  padding-top: .5em;
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  // align-items:flex-start;
+  // justify-content:left;
+  // height: 100%;
+  color: #455A64;
+}
+
+team-name-header {
   color: #455A64;
   padding-bottom: 10px;
 }
 
-p{
-  margin-left: .5em;
-}
-
-img{
-  height: 50px;
-  padding-left: 2em;
-  padding-bottom: 1em;
-
-  // float: left;
-}
-
-.container {
+.content-area {
   display: grid;
-  align-items: center;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 5px;
- }
-
- .avatar{
-  display: flex;
-  align-items: center;
- }
-
-.mat-icon{
-  color: #455a64de;
+  grid-template-columns: repeat(2, 2fr);
+  grid-template-rows: repeat(6, 4.75vw);
+  grid-gap: 0;
+//   width: 100%;
+//   height: 78%;
+//   box-shadow: none;
+  padding: 10px;
+//   background-color: pink;
 }
 
-.tooltip {
-  position: relative;
+//paragraph area with content
+.member-info  {
   display: inline-block;
+  //width: 48px;
+  font-size: 0.8em;
+  text-size-adjust: auto;
 }
 
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
+//avatar
+img {
+  display: inline-block;
+  vertical-align:top;
+  height: 48px;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  //float: left;
 }
 
+// .mat-icon{
+//   color: #455a64de;
+// }
+
+// .tooltip {
+//   position: relative;
+//   display: inline-block;
+// }
+
+// .tooltip:hover .tooltiptext {
+//   visibility: visible;
+// }
+
+// .divider {
+//   display: flex;
+//   padding-bottom: 3em;;
+// }
+
+//.selectedteamheader  {
+  //padding-bottom: 10px;
+  //color: #455A64;
+  //padding-bottom: 10px;
+  //justify-content: left;
+//}

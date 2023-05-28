@@ -17,8 +17,6 @@ export class TeamListContainerComponent implements OnInit {
   isMemberSelected: boolean = false;
   selectedMember: Member = {} as Member;
 
-
-
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
@@ -41,8 +39,6 @@ export class TeamListContainerComponent implements OnInit {
     this.isExpanded = isExpanded;
     console.log(isExpanded);
   }
-
-
 
   handleSelectedTeam(selectedTeam: Team) {
     this.selectedTeam = selectedTeam;
