@@ -1,11 +1,12 @@
+<!-- This is the LEFT CARD - RIGHT CARD IS BELOW!!! -->
 <div class="main-container">
-  <div class="card">
+  <div class="left-card">
     <mat-card>
       <mat-card-header>
         <mat-card-title class="left-container-header">Teams</mat-card-title>
       </mat-card-header>
       <mat-divider class="divider"></mat-divider>
-      <mat-card-content class="content-area">
+      <mat-card-content class="left-content-area">
         <app-team-expansion-panel
           (isExpanded)="handleExpanded($event)"
           (selectedTeam)="handleSelectedTeam($event)"
@@ -24,20 +25,39 @@
     </mat-card>
   </div>
 
-  <div class="card">
+  <!-- This is the RIGHT CARD -->
+  <div class="right-card">
     <mat-card>
-      <mat-card-content class="info-container">
+      <mat-card-header>
+        <mat-card-title class="right-container-header">{{ selectedTeam.name }}</mat-card-title>
+      </mat-card-header>
+      <!-- WE NEED THIS DIVIDER TO ALSO APPEAR IN THE MEMBER DETAILS -->
+      <mat-divider class="divider" *ngIf="isExpanded && !isMemberSelected"></mat-divider>
+      <mat-card-content class="right-content-area">
         <app-member-details
           *ngIf="isMemberSelected && isExpanded"
-          [member]="selectedMember"
-        ></app-member-details>
+          [member]="selectedMember">
+        </app-member-details>
         <app-team-info-container
           *ngIf="isExpanded && !isMemberSelected"
           [selectedTeam]="selectedTeam"
-          [members]="selectedTeam.members"
-        ></app-team-info-container>
-        <p *ngIf="!isExpanded">Select a Team</p>
-      </mat-card-content>
+          [members]="selectedTeam.members">
+        </app-team-info-container>
+          <p class="select-a-team" *ngIf="!isExpanded">Select a Team</p>
+    </mat-card-content>
+    <mat-divider class="divider" *ngIf="isExpanded && !isMemberSelected"></mat-divider>
+      <mat-action-row *ngIf="isExpanded && !isMemberSelected">
+        <div class="tooltip" matTooltip="Edit {{ selectedTeam.name }}">
+          <button mat-button>
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        <div class="tooltip" matTooltip="Archive {{ selectedTeam.name }}">
+          <button mat-button>
+            <mat-icon>archive</mat-icon>
+          </button>
+        </div>
+      </mat-action-row>
     </mat-card>
   </div>
 </div>

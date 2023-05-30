@@ -22,10 +22,12 @@ import { MemberDialogComponent } from './modals/member-dialog/member-dialog.comp
 
 import { TeamInfoContainerComponent } from './team-info-container/team-info-container.component';
 import { MemberDetailsComponent } from './member-details/member-details.component';
+
 import { EditTeamDialogModalComponent } from './modals/edit-team-dialog-modal/edit-team-dialog-modal.component';
 import { ArchiveTeamDialogModalComponent } from './modals/archive-team-dialog-modal/archive-team-dialog-modal.component';
 import { ConfirmDialogComponent } from './modals/archive-team-dialog-modal/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from './modals/edit-team-dialog-modal/edit-dialog/edit-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { EditDialogComponent } from './modals/edit-team-dialog-modal/edit-dialog
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    ScrollingModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],

@@ -1,19 +1,15 @@
-<mat-card-header class="member-detail-header">
-  <mat-card-title
-    >Selected Team Goes Here > {{ member?.first_name }}
-    {{ member?.last_name }}</mat-card-title
-  >
-</mat-card-header>
-
-<mat-divider class="divider"></mat-divider>
-
-<div class="member-details" *ngIf="member">
-  <div class="first-row">
-    <img class="member-photo" src="/assets/images/avatar.png" />
-  </div>
-  <div class="second-row">
-    <p class="member-information">
-      {{ member.first_name }} {{ member.last_name }}<br />{{ member.job_title }}
-    </p>
-  </div>
+<div>
+  <mat-card class="card">
+    <mat-card-content class="content-area">
+    <div *ngIf="member">
+      <img src="assets/images/avatar.png" />
+      <p class="member-information">
+        {{ member.first_name }}&nbsp;{{ member.last_name }}
+        <br>
+        <!-- Need to add interpolation and code for member.email somehow so it will also appear -->
+        {{ member.job_title }}<br>Member Email Here
+      </p>
+    </div>
+    </mat-card-content>
+  </mat-card>
 </div>
