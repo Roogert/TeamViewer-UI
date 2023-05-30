@@ -28,7 +28,6 @@ import { ArchiveTeamDialogModalComponent } from './modals/archive-team-dialog-mo
 import { ConfirmDialogComponent } from './modals/archive-team-dialog-modal/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from './modals/edit-team-dialog-modal/edit-dialog/edit-dialog.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,15 +38,15 @@ import { EditDialogComponent } from './modals/edit-team-dialog-modal/edit-dialog
     TeamExpansionPanelComponent,
     SignInModalComponent,
     SignUpModalComponent,
-      TeamDialogComponent,
-      MemberDialogComponent,
+    TeamDialogComponent,
+    MemberDialogComponent,
 
     TeamInfoContainerComponent,
-     MemberDetailsComponent,
-     EditTeamDialogModalComponent,
-     ArchiveTeamDialogModalComponent,
-     ConfirmDialogComponent,
-     EditDialogComponent,
+    MemberDetailsComponent,
+    EditTeamDialogModalComponent,
+    ArchiveTeamDialogModalComponent,
+    ConfirmDialogComponent,
+    EditDialogComponent,
   ],
   imports: [
     FormsModule,
@@ -56,7 +55,6 @@ import { EditDialogComponent } from './modals/edit-team-dialog-modal/edit-dialog
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    ScrollingModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent],
