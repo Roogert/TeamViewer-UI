@@ -1,19 +1,18 @@
 <!-- RIGHT Side, but NOT THE CARD ITSELF - CARD is in TEAM LIST CONTAINER -->
-  <div>
-    <mat-card class="card">
-      <mat-card-content class="content-area">
-        <div *ngFor="let member of members">
-          <img class="image" src="/assets/images/avatar.png" />
-          <p class="member-info">
+<div>
+  <mat-card class="card">
+    <mat-card-content class="content-area">
+      <div *ngFor="let member of members">
+        <img class="image" src="/assets/images/avatar.png" />
+        <p class="member-info">
           {{ member.first_name }}&nbsp;{{ member.last_name }}
-          <br>
+          <br />
           {{ member.job_title }}
-          </p>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-
+        </p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
 
 <!-- THIS INFORMATION ONLY NEEDS TO APPEAR ON THE MAIN CARD AND WILL SHOW THERE (TEAM LIST CONTAINER) - THIS CAN BE DELETED
         <mat-action-row>

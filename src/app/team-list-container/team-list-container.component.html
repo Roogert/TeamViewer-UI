@@ -29,23 +29,33 @@
   <div class="right-card">
     <mat-card>
       <mat-card-header>
-        <mat-card-title class="right-container-header">{{ selectedTeam.name }}</mat-card-title>
+        <mat-card-title class="right-container-header">{{
+          selectedTeam.name
+        }}</mat-card-title>
       </mat-card-header>
       <!-- WE NEED THIS DIVIDER TO ALSO APPEAR IN THE MEMBER DETAILS -->
-      <mat-divider class="divider" *ngIf="isExpanded && !isMemberSelected"></mat-divider>
+      <mat-divider
+        class="divider"
+        *ngIf="isExpanded && !isMemberSelected"
+      ></mat-divider>
       <mat-card-content class="right-content-area">
         <app-member-details
           *ngIf="isMemberSelected && isExpanded"
-          [member]="selectedMember">
+          [member]="selectedMember"
+        >
         </app-member-details>
         <app-team-info-container
           *ngIf="isExpanded && !isMemberSelected"
           [selectedTeam]="selectedTeam"
-          [members]="selectedTeam.members">
+          [members]="selectedTeam.members"
+        >
         </app-team-info-container>
-          <p class="select-a-team" *ngIf="!isExpanded">Select a Team</p>
-    </mat-card-content>
-    <mat-divider class="divider" *ngIf="isExpanded && !isMemberSelected"></mat-divider>
+        <p class="select-a-team" *ngIf="!isExpanded">Select a Team</p>
+      </mat-card-content>
+      <mat-divider
+        class="divider"
+        *ngIf="isExpanded && !isMemberSelected"
+      ></mat-divider>
       <mat-action-row *ngIf="isExpanded && !isMemberSelected">
         <div class="tooltip" matTooltip="Edit {{ selectedTeam.name }}">
           <button mat-button>

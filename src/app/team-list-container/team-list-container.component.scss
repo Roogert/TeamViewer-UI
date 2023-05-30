@@ -28,9 +28,11 @@
 }
 
 .right-card mat-card {
-    height: 100%;
-    padding: 0 0 0 0;
-  }
+  height: 100%;
+  padding: 0 0 0 0;
+  display: flex;
+  flex-direction: column;
+}
 
 .right-content-area {
   position: relative;
@@ -38,8 +40,10 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: #455A64;
+  // color: #455a64;
   // TESTING background-color: aqua;
+  padding: 0 0 0 0;
+  overflow: auto;
 }
 
 // .select-a-team {
@@ -50,24 +54,25 @@
 //   color: #455A64;
 // }
 
-.left-content-area{
+.left-content-area {
   width: 100%;
   height: 78%;
   box-shadow: none;
   padding: 0 0 0 0;
+  overflow: auto;
 }
 
 .left-container-header {
-  color: #455A64;
+  color: #455a64;
   padding-bottom: 10px;
 }
 
 .right-container-header {
-  color: #455A64;
+  color: #455a64;
   padding-bottom: 10px;
 }
 
-.mat-icon{
+.mat-icon {
   color: #455a64de;
 }
 
