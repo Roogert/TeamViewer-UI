@@ -19,8 +19,18 @@
       <mat-form-field>
         <mat-label>Title</mat-label>
         <mat-select formControlName="job_title">
-          <mat-option value="Software Engineer">Software Engineer</mat-option>
-          <mat-option value="Junior Developer">Junior Developer</mat-option>
+          <mat-option value="Associate Software Engineer"
+            >Associate Software Engineer</mat-option
+          ><mat-option value="Software Engineer">Software Engineer</mat-option
+          ><mat-option value="Senior Software Engineer"
+            >Senior Software Engineer</mat-option
+          >
+          <mat-option value="Associate Quality Engineer"
+            >Associate Quality Engineer</mat-option
+          ><mat-option value="Quality Engineer">Quality Engineer</mat-option>
+          <mat-option value="Senior Quality Engineer"
+            >Senior Quality Engineer</mat-option
+          >
         </mat-select>
         <mat-error *ngIf="memberForm.controls['job_title'].invalid">
           Please select a Title.
