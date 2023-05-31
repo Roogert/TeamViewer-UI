@@ -1,3 +1,5 @@
+//This is the main container that holds the left and right cards and
+//keeps them where they belong.
 .main-container {
   display: flex;
   flex-wrap: wrap;
@@ -6,6 +8,7 @@
   margin: 30px;
 }
 
+//This is the main area for the left card
 .left-card {
   width: 45%;
   height: 550px;
@@ -13,13 +16,15 @@
   // TESTING background-color: red;
 }
 
+//This is the main area for the right card
 .right-card {
   width: 45%;
   height: 550px;
   // box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  // TESTING background-color: red;
+  // TESTING - background-color: red;
 }
 
+//This is the card that holds the team expansion panel
 .left-card mat-card {
   height: 100%;
   padding: 0 0 0 0;
@@ -27,6 +32,7 @@
   flex-direction: column;
 }
 
+//This is the card that holds the .right-content-area information
 .right-card mat-card {
   height: 100%;
   padding: 0 0 0 0;
@@ -34,13 +40,14 @@
   flex-direction: column;
 }
 
+//This is the area that says "Select a Team"
 .right-content-area {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
-  // color: #455a64;
+  color: #455a64; //this is the text color
   // TESTING background-color: aqua;
   padding: 0 0 0 0;
   overflow: auto;
@@ -54,12 +61,15 @@
 //   color: #455A64;
 // }
 
+//This is the card area under Teams and above buttons that holds the
+//expansion panel.
 .left-content-area {
   width: 100%;
   height: 78%;
   box-shadow: none;
   padding: 0 0 0 0;
   overflow: auto;
+  color: #455a64;
 }
 
 .left-container-header {
@@ -84,3 +94,4 @@
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+

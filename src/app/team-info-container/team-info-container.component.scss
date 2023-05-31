@@ -1,3 +1,4 @@
+// This card is the RIGHT card that holds grid of the names. It floats on top of the main card container.
 .card {
   position: absolute;
   top: 0;
@@ -8,13 +9,14 @@
   // justify-content:left;
   // height: 100%;
   color: #455a64;
+  box-shadow: none; //this removes line around bottom of card
 }
 
 team-name-header {
   color: #455a64;
   padding-bottom: 10px;
 }
-
+//This is the area that holds the 12 team members in a grid of 2 columns / 6 rows
 .content-area {
   display: grid;
   grid-template-columns: repeat(2, 2fr);

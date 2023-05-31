@@ -1,9 +1,14 @@
+//Expansion Panels on left side
 mat-expansion-panel {
   width: 100%;
   margin: 0;
   border-radius: 0;
   padding: 0 0 0 0;
   box-shadow: none;
+}
+//Header(s) for each of the expansion panels
+.mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
+  color: #455a64;
 }
 
 mat-accordian {
