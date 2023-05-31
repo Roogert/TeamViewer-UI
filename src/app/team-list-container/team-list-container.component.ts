@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { TeamService } from 'src/app/services/team.service';
+import { Component, OnDestroy, Input } from '@angular/core';
 import { TeamDialogComponent } from '../modals/team-dialog-modal/team-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Member } from '../models/member.model';
 import { Team } from '../models/team.model';
-
+import { takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
+import { ConfirmDialogComponent } from '../modals/archive-team-dialog-modal/confirm-dialog/confirm-dialog.component';
+import { EditDialogComponent } from '../modals/edit-team-dialog-modal/edit-dialog/edit-dialog.component';
 @Component({
   selector: 'app-team-list-container',
   templateUrl: './team-list-container.component.html',
   styleUrls: ['./team-list-container.component.scss'],
 })
-export class TeamListContainerComponent implements OnInit {
+export class TeamListContainerComponent implements OnDestroy {
   isExpanded: boolean = false;
 
   selectedTeam: Team = {} as Team;
@@ -17,12 +21,40 @@ export class TeamListContainerComponent implements OnInit {
   isMemberSelected: boolean = false;
   selectedMember: Member = {} as Member;
 
-  constructor(public dialog: MatDialog) {}
+  private unsubscribe$ = new Subject<void>();
 
-  ngOnInit(): void {}
+  constructor(public dialog: MatDialog, private teamService: TeamService) {}
 
-  addTeam() {}
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
 
+  editTeamDialog(team: Team) {
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      width: '800px',
+      height: '270px',
+      data: { team: team },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // Perform some action if the dialog was closed after clicking "Confirm"
+        this.teamService
+          .updateTeam(result)
+          .pipe(takeUntil(this.unsubscribe$))
+          .subscribe(
+            (response) => {
+              console.log('Team edited successfully', response);
+              location.reload();
+            },
+            (error) => {
+              console.log('Failed to edit team', error);
+            }
+          );
+      }
+    });
+  }
   openTeamDialog(): void {
     const dialogRef = this.dialog.open(TeamDialogComponent, {
       width: '800px',
@@ -35,6 +67,31 @@ export class TeamListContainerComponent implements OnInit {
     });
   }
 
+  archiveTeamDialog(team: Team) {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: { teamName: team.name },
+    });
+
+    // handle the dialog result
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // if the result is true, delete the team
+        this.teamService
+          .deleteTeam(team.id)
+          .pipe(takeUntil(this.unsubscribe$))
+          .subscribe(
+            (response) => {
+              console.log('Team deleted successfully', response);
+              location.reload();
+            },
+            (error) => {
+              console.log('Failed to delete team', error);
+            }
+          );
+      }
+    });
+  }
+
   handleExpanded(isExpanded: boolean) {
     this.isExpanded = isExpanded;
     console.log(isExpanded);
@@ -43,7 +100,6 @@ export class TeamListContainerComponent implements OnInit {
   handleSelectedTeam(selectedTeam: Team) {
     this.selectedTeam = selectedTeam;
     console.log(selectedTeam);
-
   }
 
   handleSelectedMembers(selectedMembers: Member[]) {

@@ -58,12 +58,12 @@
       ></mat-divider>
       <mat-action-row *ngIf="isExpanded && !isMemberSelected">
         <div class="tooltip" matTooltip="Edit {{ selectedTeam.name }}">
-          <button mat-button>
+          <button mat-button (click)="editTeamDialog(selectedTeam)">
             <mat-icon>edit</mat-icon>
           </button>
         </div>
         <div class="tooltip" matTooltip="Archive {{ selectedTeam.name }}">
-          <button mat-button>
+          <button mat-button (click)="archiveTeamDialog(selectedTeam)">
             <mat-icon>archive</mat-icon>
           </button>
         </div>

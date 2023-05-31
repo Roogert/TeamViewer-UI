@@ -1,15 +1,15 @@
 <div>
   <mat-card class="card">
     <mat-card-content class="content-area">
-    <div *ngIf="member">
-      <img src="assets/images/avatar.png" />
-      <p class="member-information">
-        {{ member.first_name }}&nbsp;{{ member.last_name }}
-        <br>
-        <!-- Need to add interpolation and code for member.email somehow so it will also appear -->
-        {{ member.job_title }}<br>Member Email Here
-      </p>
-    </div>
+      <div *ngIf="member">
+        <img src="assets/images/avatar.png" />
+        <p class="member-information">
+          {{ member.first_name }}&nbsp;{{ member.last_name }}
+          <br />
+          <!-- Need to add interpolation and code for member.email somehow so it will also appear -->
+          {{ member.job_title }}
+        </p>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>

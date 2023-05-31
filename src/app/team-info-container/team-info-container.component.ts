@@ -3,10 +3,8 @@ import { Member } from '../models/member.model';
 import { Team } from '../models/team.model';
 import { TeamService } from '../services/team.service';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs';
+
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from '../modals/archive-team-dialog-modal/confirm-dialog/confirm-dialog.component';
-import { EditDialogComponent } from '../modals/edit-team-dialog-modal/edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-team-info-container',
@@ -29,57 +27,6 @@ export class TeamInfoContainerComponent implements OnDestroy {
 
   openMemberDetails(member: Member) {
     this.selectedMember = member;
-  }
-
-  editTeamDialog(team: Team) {
-    const dialogRef = this.dialog.open(EditDialogComponent, {
-      width: '800px',
-      height: '270px',
-      data: { team: team },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        // Perform some action if the dialog was closed after clicking "Confirm"
-        this.teamService
-          .updateTeam(result)
-          .pipe(takeUntil(this.unsubscribe$))
-          .subscribe(
-            (response) => {
-              console.log('Team edited successfully', response);
-              location.reload();
-            },
-            (error) => {
-              console.log('Failed to edit team', error);
-            }
-          );
-      }
-    });
-  }
-
-  archiveTeamDialog(team: Team) {
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      data: { teamName: team.name },
-    });
-
-    // handle the dialog result
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        // if the result is true, delete the team
-        this.teamService
-          .deleteTeam(team.id)
-          .pipe(takeUntil(this.unsubscribe$))
-          .subscribe(
-            (response) => {
-              console.log('Team deleted successfully', response);
-              location.reload();
-            },
-            (error) => {
-              console.log('Failed to delete team', error);
-            }
-          );
-      }
-    });
   }
 }
 
