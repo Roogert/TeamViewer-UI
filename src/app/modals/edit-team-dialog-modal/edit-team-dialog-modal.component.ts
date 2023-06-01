@@ -30,7 +30,6 @@ export class EditTeamDialogModalComponent {
       this.teamService.createTeam(team).subscribe(() => {
         this.dialogRef.close();
         location.reload();
-        console.log(team);
       });
     }
   }

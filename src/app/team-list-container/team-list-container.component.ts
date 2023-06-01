@@ -60,9 +60,7 @@ export class TeamListContainerComponent implements OnDestroy {
       height: '270px',
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   archiveTeamDialog(team: Team) {
@@ -99,20 +97,16 @@ export class TeamListContainerComponent implements OnDestroy {
       this.selectedMember = {} as Member;
       this.selectedTeam = {} as Team;
     }
-
-    console.log(isExpanded);
   }
   handleAllTeams(teams: Team[]) {
     this.allTeams = teams;
   }
   handleSelectedTeam(selectedTeam: Team) {
     this.selectedTeam = selectedTeam;
-    console.log(selectedTeam);
   }
 
   handleSelectedMembers(selectedMembers: Member[]) {
     this.selectedMembers = selectedMembers;
-    console.log(selectedMembers);
   }
 
   handleIsMemberSelected(member: Member) {

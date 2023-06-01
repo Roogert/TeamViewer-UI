@@ -77,7 +77,7 @@ export class AuthServiceService {
       tap({
         next: (response) => {
           // User created successfully
-          console.log(response);
+
           location.reload(); // Refresh the page
         },
         error: (error) => {

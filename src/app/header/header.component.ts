@@ -35,10 +35,7 @@ export class HeaderComponent implements OnInit {
       height: '500px',
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      // You can get your data back from the dialog here
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   openSignupDialog(): void {
@@ -47,10 +44,7 @@ export class HeaderComponent implements OnInit {
       height: '500px',
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      // You can get your data back from the dialog here
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 
   closeDialog(): void {
