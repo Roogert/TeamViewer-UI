@@ -1,15 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AuthServiceService } from './auth-service.service';
 import { environment } from 'src/environments/environment';
+import { Member } from '../models/member.model';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-interface Member {
-  first_name: string;
-  last_name: string;
-  job_title: string;
-  team_id: number;
-}
 
 @Injectable({
   providedIn: 'root',
@@ -33,13 +27,11 @@ export class MemberService {
     return this.http.post<Member>(this.apiMemberUrl, member, { headers });
   }
 
-  updateMember(member: Member): Observable<Member> {
+  updateMember(member: Member, memberId: number): Observable<Member> {
     const headers = { Authorization: 'Bearer ' + this.auth.getToken() };
-    return this.http.put<Member>(
-      `${this.apiMemberUrl}/${member.team_id}`,
-      member,
-      { headers }
-    );
+    return this.http.put<Member>(`${this.apiMemberUrl}/${memberId}`, member, {
+      headers,
+    });
   }
 
   deleteMember(id: number): Observable<{}> {

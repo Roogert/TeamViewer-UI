@@ -41,13 +41,14 @@ export class MemberDetailsComponent implements OnDestroy {
       width: '35rem',
       data: { member: member, teams: this.teams },
     });
+    console.log(this.member);
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         console.log(result);
         // Perform some action if the dialog was closed after clicking "Confirm"
         this.memberService
-          .updateMember(result)
+          .updateMember(result, this.member.id!)
           .pipe(takeUntil(this.unsubscribe$))
           .subscribe(
             (response) => {
