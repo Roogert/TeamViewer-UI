@@ -15,7 +15,7 @@ import { EditDialogComponent } from '../modals/edit-team-dialog-modal/edit-dialo
 })
 export class TeamListContainerComponent implements OnDestroy {
   isExpanded: boolean = false;
-
+  allTeams: Team[] = [];
   selectedTeam: Team = {} as Team;
   selectedMembers: Member[] = [];
   isMemberSelected: boolean = false;
@@ -39,7 +39,6 @@ export class TeamListContainerComponent implements OnDestroy {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        // Perform some action if the dialog was closed after clicking "Confirm"
         this.teamService
           .updateTeam(result)
           .pipe(takeUntil(this.unsubscribe$))
@@ -63,7 +62,6 @@ export class TeamListContainerComponent implements OnDestroy {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
-      // You can get your data back from the dialog here
     });
   }
 
@@ -94,9 +92,19 @@ export class TeamListContainerComponent implements OnDestroy {
 
   handleExpanded(isExpanded: boolean) {
     this.isExpanded = isExpanded;
+
+    if (!isExpanded) {
+      // panel is collapsing
+      this.isMemberSelected = false;
+      this.selectedMember = {} as Member;
+      this.selectedTeam = {} as Team;
+    }
+
     console.log(isExpanded);
   }
-
+  handleAllTeams(teams: Team[]) {
+    this.allTeams = teams;
+  }
   handleSelectedTeam(selectedTeam: Team) {
     this.selectedTeam = selectedTeam;
     console.log(selectedTeam);

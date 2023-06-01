@@ -26,10 +26,37 @@
   padding-top: 100px;
 }
 
+mat-action-row {
+  border: none;
+  box-shadow: none;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.member-functions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  gap: 10px; // Optional: for some spacing between the buttons
+}
+
+.mat-icon {
+  color: #455a64de;
+}
+
 img {
   display: inline-block;
   vertical-align: top;
   padding: 10px;
   width: 200px;
-
 }

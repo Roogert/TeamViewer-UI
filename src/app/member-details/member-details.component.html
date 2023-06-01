@@ -10,6 +10,18 @@
           {{ member.job_title }}
         </p>
       </div>
+      <mat-action-row class="member-functions">
+        <div class="tooltip" matTooltip="Edit ">
+          <button mat-button (click)="editMemberDialog(selectedMember)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        <div class="tooltip" matTooltip="Archive ">
+          <button mat-button (click)="archiveMember(selectedMember)">
+            <mat-icon>archive</mat-icon>
+          </button>
+        </div>
+      </mat-action-row>
     </mat-card-content>
   </mat-card>
 </div>

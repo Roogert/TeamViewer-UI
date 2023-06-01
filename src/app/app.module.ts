@@ -27,6 +27,8 @@ import { EditTeamDialogModalComponent } from './modals/edit-team-dialog-modal/ed
 import { ArchiveTeamDialogModalComponent } from './modals/archive-team-dialog-modal/archive-team-dialog-modal.component';
 import { ConfirmDialogComponent } from './modals/archive-team-dialog-modal/confirm-dialog/confirm-dialog.component';
 import { EditDialogComponent } from './modals/edit-team-dialog-modal/edit-dialog/edit-dialog.component';
+import { EditMemberDialogComponent } from './modals/edit-member-dialog/edit-member-dialog.component';
+import { ConfirmMemberDialogComponent } from './modals/edit-member-dialog/confirm-member-dialog/confirm-member-dialog';
 
 @NgModule({
   declarations: [
@@ -40,13 +42,14 @@ import { EditDialogComponent } from './modals/edit-team-dialog-modal/edit-dialog
     SignUpModalComponent,
     TeamDialogComponent,
     MemberDialogComponent,
-
+    ConfirmMemberDialogComponent,
     TeamInfoContainerComponent,
     MemberDetailsComponent,
     EditTeamDialogModalComponent,
     ArchiveTeamDialogModalComponent,
     ConfirmDialogComponent,
     EditDialogComponent,
+    EditMemberDialogComponent,
   ],
   imports: [
     FormsModule,

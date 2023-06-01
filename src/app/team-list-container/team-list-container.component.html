@@ -12,6 +12,7 @@
           (selectedTeam)="handleSelectedTeam($event)"
           (selectedMembers)="handleSelectedMembers($event)"
           (memberSelected)="handleIsMemberSelected($event)"
+          (allTeams)="handleAllTeams($event)"
         ></app-team-expansion-panel>
       </mat-card-content>
       <mat-divider class="divider"></mat-divider>
@@ -42,6 +43,7 @@
         <app-member-details
           *ngIf="isMemberSelected && isExpanded"
           [member]="selectedMember"
+          [teams]="allTeams"
         >
         </app-member-details>
         <app-team-info-container

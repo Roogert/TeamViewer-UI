@@ -6,7 +6,7 @@ import {
   Output,
 } from '@angular/core';
 import { TeamService } from 'src/app/services/team.service';
-import { Team } from 'src/app/models/team.model';
+
 import { MatDialog } from '@angular/material/dialog';
 import { MemberDialogComponent } from '../modals/member-dialog/member-dialog.component';
 
@@ -28,6 +28,7 @@ export class TeamExpansionPanelComponent implements OnInit {
   @Output() selectedMembers: EventEmitter<Member[]> = new EventEmitter<
     Member[]
   >();
+  @Output() allTeams: EventEmitter<Team[]> = new EventEmitter<Team[]>();
   @Output() memberSelected: EventEmitter<Member> = new EventEmitter<Member>();
   @Output() selectedTeam: EventEmitter<Team> = new EventEmitter<Team>();
 
@@ -45,7 +46,11 @@ export class TeamExpansionPanelComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.teamService.getAllTeams().subscribe((teams) => (this.teams = teams));
+    this.teamService
+      .getAllTeams()
+      .subscribe(
+        (teams) => ((this.teams = teams), this.allTeams.next(this.teams))
+      );
   }
 
   getMemberPhoto() {
@@ -73,21 +78,20 @@ export class TeamExpansionPanelComponent implements OnInit {
   addTeamMember(): void {
     if (this.members.length < this.maxTeamMembers) {
       console.log('New team member added.');
-      this.checkTeamSize();
     } else {
       console.log('Cannot add more team members. Maximum limit reached.');
     }
   }
 
-  checkTeamSize(): void {
-    this.teams.forEach((team) => {
-      if (team.members.length > this.maxTeamMembers) {
-        this.showErrorMessage = true;
-        setTimeout(() => {
-          this.showErrorMessage = false;
-        }, 3000);
-      }
-    });
+  handleButtonClick(team: Team): void {
+    if (team.members.length >= this.maxTeamMembers) {
+      team.showErrorMessage = true;
+      setTimeout(() => {
+        team.showErrorMessage = false;
+      }, 2000);
+    } else {
+      this.openDialog();
+    }
   }
 
   removeTeamMember(index: number): void {
@@ -111,4 +115,11 @@ interface Member {
   last_name: string;
   job_title: string;
   team_id: number;
+}
+interface Team {
+  id: number;
+  name: string;
+  description: string;
+  members: Member[];
+  showErrorMessage: boolean;
 }
